@@ -164,16 +164,18 @@ header {
 
 .brand-badge {
   background: #fffdf8;
-  border-radius: 10px;
-  padding: 5px 12px;
+  border-radius: 8px;
+  padding: 4px 10px;
   display: flex;
   align-items: center;
   box-shadow: 0 4px 14px -4px rgba(0, 0, 0, .4);
 }
 
 .brand-badge img {
-  height: 48px;
+  height: 40px;
   width: auto;
+  max-width: 140px;
+  object-fit: contain;
   display: block;
 }
 
