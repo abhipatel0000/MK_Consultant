@@ -1,7 +1,5 @@
 -- M K Consultant Database Schema
 
-CREATE DATABASE IF NOT EXISTS `mk_consultant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `mk_consultant`;
 
 -- 1. Admins Table
 CREATE TABLE IF NOT EXISTS `admins` (

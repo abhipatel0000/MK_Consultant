@@ -115,16 +115,19 @@ app.use((req, res, next) => {
 // 9. Error Handler Middleware
 app.use(errorMiddleware);
 
-// Initialize Default Administrator
-const initAdmin = async () => {
+// Initialize Database Schema & Default Administrator
+const initDb = require('./config/initDb');
+
+const initializeApp = async () => {
   try {
+    await initDb();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@mkconsultant.in';
     const adminPassword = process.env.INITIAL_ADMIN_PASSWORD || 'AdminPass123!';
     await Admin.createDefaultAdminIfNotExist(adminEmail, adminPassword);
   } catch (err) {
-    logger.error('Failed to initialize default admin account', err);
+    logger.error('Failed to initialize app data:', err);
   }
 };
-initAdmin();
+initializeApp();
 
 module.exports = app;

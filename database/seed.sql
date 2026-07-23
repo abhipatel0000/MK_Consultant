@@ -1,5 +1,4 @@
 -- Seed Services for M K Consultant
-USE `mk_consultant`;
 
 INSERT INTO `services` (`service_key`, `service_name`, `display_order`, `is_active`) VALUES
 ('gst_registration', 'GST Registration', 1, 1),
