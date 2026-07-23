@@ -1,0 +1,11 @@
+# nixpacks.toml — Railpack/Nixpacks config for Railway deployment
+# Tells Railway the Node.js app lives in the /backend subfolder
+
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["cd backend && npm install --production"]
+
+[start]
+cmd = "cd backend && npm start"
