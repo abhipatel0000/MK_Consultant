@@ -39,7 +39,7 @@ app.use(
 // 2. CORS setup
 app.use(
   cors({
-    origin: true, // Allow frontend origin
+    origin: process.env.ALLOWED_ORIGIN || true, // Locked to Vercel URL in production
     credentials: true
   })
 );
@@ -62,7 +62,8 @@ app.use(
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // Secure in production (HTTPS)
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      sameSite: 'lax'
+      // 'none' required for cross-origin cookies (Vercel frontend → Railway backend)
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     }
   })
 );

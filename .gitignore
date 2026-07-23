@@ -8,12 +8,12 @@
 # 1. ENVIRONMENT & SECRETS  — Never commit credentials or API keys
 # =============================================================================
 .env
-.env.*
-!.env.example          # allow the template/placeholder file if you add one
 .env.local
 .env.development
 .env.production
 .env.staging
+# .env.example is intentionally tracked — it's a safe template with no real secrets
+
 *.pem
 *.key
 *.crt
