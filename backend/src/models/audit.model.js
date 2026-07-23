@@ -23,14 +23,15 @@ const AuditLog = {
 
   // Get recent logs
   async findRecent(limit = 100) {
+    const safeLimit = Math.max(1, parseInt(limit, 10) || 100);
     const query = `
       SELECT l.*, a.full_name as admin_name
       FROM admin_audit_logs l
       LEFT JOIN admins a ON l.admin_id = a.id
       ORDER BY l.created_at DESC
-      LIMIT ?
+      LIMIT ${safeLimit}
     `;
-    const [rows] = await db.execute(query, [limit]);
+    const [rows] = await db.query(query);
     return rows;
   }
 };

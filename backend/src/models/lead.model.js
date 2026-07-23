@@ -83,7 +83,7 @@ const Lead = {
 
     // Count total matches before pagination
     const countQuery = `SELECT COUNT(*) as total FROM (${query}) as countTable`;
-    const [countRows] = await db.execute(countQuery, params);
+    const [countRows] = await db.query(countQuery, params);
     const totalLeads = countRows[0]?.total || 0;
 
     // Sorting
@@ -93,10 +93,9 @@ const Lead = {
     query += ` ORDER BY l.${sortBy} ${sortOrder}`;
 
     // Pagination
-    query += ` LIMIT ? OFFSET ?`;
-    params.push(limit, offset);
+    query += ` LIMIT ${Number(limit)} OFFSET ${Number(offset)}`;
 
-    const [rows] = await db.execute(query, params);
+    const [rows] = await db.query(query, params);
 
     return {
       leads: rows,
@@ -104,7 +103,7 @@ const Lead = {
         total: totalLeads,
         page,
         limit,
-        pages: Math.ceil(totalLeads / limit)
+        pages: Math.ceil(totalLeads / limit) || 1
       }
     };
   },
