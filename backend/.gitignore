@@ -1,4 +1,2 @@
-node_modules/
-.env
-.DS_Store
-*.log
+# All ignore rules are managed from the root .gitignore
+# See: /.gitignore

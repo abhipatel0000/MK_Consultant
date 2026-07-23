@@ -1,0 +1,170 @@
+# =============================================================================
+# MK Consultant — Root .gitignore
+# Project: Node.js/Express Backend  +  Vanilla HTML/CSS/JS Frontend  +  MySQL
+# =============================================================================
+
+
+# =============================================================================
+# 1. ENVIRONMENT & SECRETS  — Never commit credentials or API keys
+# =============================================================================
+.env
+.env.*
+!.env.example          # allow the template/placeholder file if you add one
+.env.local
+.env.development
+.env.production
+.env.staging
+*.pem
+*.key
+*.crt
+*.p12
+
+
+# =============================================================================
+# 2. NODE / NPM
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.npm/
+.yarn/
+.pnp.*
+
+# Lock files — keep package-lock.json for reproducible installs
+# but ignore yarn.lock if you only use npm
+yarn.lock
+
+
+# =============================================================================
+# 3. BUILD OUTPUT & DIST
+# =============================================================================
+dist/
+build/
+out/
+.cache/
+
+
+# =============================================================================
+# 4. LOGS
+# =============================================================================
+logs/
+*.log
+*.log.*
+log/
+
+
+# =============================================================================
+# 5. DATABASE & BACKUPS  — local SQL dumps, binary data
+# =============================================================================
+*.sql.gz
+*.dump
+*.bak
+*.backup
+# Keep schema.sql and seed.sql (they are source-controlled by design)
+# database/schema.sql  ← tracked
+# database/seed.sql    ← tracked
+
+
+# =============================================================================
+# 6. OPERATING SYSTEM FILES
+# =============================================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump          # Cygwin/MSYS crash dumps (e.g. grep.exe.stackdump)
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+
+# =============================================================================
+# 7. EDITOR & IDE FILES
+# =============================================================================
+
+# VS Code
+.vscode/
+!.vscode/extensions.json     # optionally share recommended extensions
+!.vscode/settings.json       # optionally share workspace settings
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+# =============================================================================
+# 8. TEMPORARY & MISC FILES
+# =============================================================================
+tmp/
+temp/
+.tmp/
+*.tmp
+*.temp
+*.bk
+*.orig
+
+
+# =============================================================================
+# 9. XAMPP / LOCAL SERVER ARTIFACTS
+# =============================================================================
+# Nothing from XAMPP itself is inside this project folder,
+# but guard against accidental drops of XAMPP config or data files
+apache_pb*.gif
+httpd-*.conf
+
+
+# =============================================================================
+# 10. SENSITIVE UPLOADS & USER DATA
+# =============================================================================
+# If you ever add a file-upload feature, keep uploads out of the repo
+uploads/
+public/uploads/
+backend/uploads/
+
+
+# =============================================================================
+# 11. TEST & COVERAGE OUTPUT
+# =============================================================================
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+junit.xml
