@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Management | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item active">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>Lead Enquiries Management</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Search, review and track customer follow-up actions</p>
+      </div>
+      <div>
+        <!-- Export to CSV -->
+        <button class="btn btn-secondary" id="exportCsvBtn">📥 Export Leads CSV</button>
+      </div>
+    </div>
+
+    <!-- Filter Bar Controls -->
+    <div class="filter-bar">
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="searchField">Search Name/Phone/Email</label>
+        <input type="text" id="searchField" class="form-input" placeholder="Search keywords...">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="filterService">Filter Service</label>
+        <select id="filterService" class="form-input">
+          <option value="">All Services</option>
+          <option value="1">GST Registration</option>
+          <option value="2">MSME Registration</option>
+          <option value="3">IEC Registration</option>
+          <option value="4">ICEGATE Registration</option>
+          <option value="5">FSSAI Registration</option>
+          <option value="6">PAN Card</option>
+          <option value="7">Passport Registration</option>
+          <option value="8">Trademark Registration</option>
+          <option value="9">Digital Signature</option>
+          <option value="10">Partnership Deed</option>
+          <option value="11">Accounting Work</option>
+          <option value="12">Other Services</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="filterStatus">Filter Status</label>
+        <select id="filterStatus" class="form-input">
+          <option value="">All Statuses</option>
+          <option value="NEW">New</option>
+          <option value="CONTACTED">Contacted</option>
+          <option value="FOLLOW_UP">Follow Up</option>
+          <option value="INTERESTED">Interested</option>
+          <option value="DOCUMENTS_PENDING">Documents Pending</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="NOT_INTERESTED">Not Interested</option>
+          <option value="CLOSED">Closed</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="filterSort">Sort By</label>
+        <select id="filterSort" class="form-input">
+          <option value="created_at">Submission Date</option>
+          <option value="full_name">Customer Name</option>
+          <option value="status">Status</option>
+          <option value="updated_at">Last Updated</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" id="resetFiltersBtn" style="height: 45px;">Reset Filters</button>
+    </div>
+
+    <!-- Leads Table Grid -->
+    <div class="table-card">
+      
+      <!-- Status Legend -->
+      <div class="status-legend">
+        <span class="legend-title">Status Legend:</span>
+        <div class="legend-item">
+          <span class="badge badge-new" style="font-size: 0.65rem; padding: 2px 6px;">NEW</span>
+          <span class="legend-desc">Fresh, untouched lead</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge badge-contacted" style="font-size: 0.65rem; padding: 2px 6px;">CONTACTED</span>
+          <span class="badge badge-follow_up" style="font-size: 0.65rem; padding: 2px 6px;">FOLLOW UP</span>
+          <span class="badge badge-interested" style="font-size: 0.65rem; padding: 2px 6px;">INTERESTED</span>
+          <span class="legend-desc">Active communication</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge badge-in_progress" style="font-size: 0.65rem; padding: 2px 6px;">IN PROGRESS</span>
+          <span class="badge badge-documents_pending" style="font-size: 0.65rem; padding: 2px 6px;">DOCS PENDING</span>
+          <span class="badge badge-completed" style="font-size: 0.65rem; padding: 2px 6px;">COMPLETED</span>
+          <span class="legend-desc">Working (Converted)</span>
+        </div>
+        <div class="legend-item">
+          <span class="badge badge-not_interested" style="font-size: 0.65rem; padding: 2px 6px;">NOT INT.</span>
+          <span class="badge badge-closed" style="font-size: 0.65rem; padding: 2px 6px;">CLOSED</span>
+          <span class="legend-desc">Closed / Lost lead</span>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                ID
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">System identifier for the lead.</span>
+                </div>
+              </th>
+              <th>
+                Customer Name
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The name provided by the customer in the enquiry form.</span>
+                </div>
+              </th>
+              <th>
+                Phone
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The phone number provided by the customer.</span>
+                </div>
+              </th>
+              <th>
+                Service
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The specific service the customer enquired about.</span>
+                </div>
+              </th>
+              <th>
+                Contact Method
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The platform through which the customer was captured.</span>
+                </div>
+              </th>
+              <th>
+                Status
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The current operational stage of this lead.</span>
+                </div>
+              </th>
+              <th>
+                Date
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Date and time when the lead form was submitted.</span>
+                </div>
+              </th>
+              <th>
+                Actions
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Operations you can perform on this lead (e.g., view details).</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <tr>
+              <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 40px 0;">Loading leads list...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Block -->
+      <div class="pagination-controls">
+        <div style="font-size: 0.85rem; color: var(--text-muted);" id="paginationStats">
+          Showing 0-0 of 0 leads
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-secondary" id="prevPageBtn" disabled>Previous</button>
+          <button class="btn btn-secondary" id="nextPageBtn" disabled>Next</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/admin-leads.js"></script>
+</body>
+</html>

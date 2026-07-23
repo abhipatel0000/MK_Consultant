@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interaction Analytics | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item active">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>User Interaction Analytics</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Analyze clicks, links, whatsapp contacts, and document accordions opens</p>
+      </div>
+    </div>
+
+    <!-- Interaction KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Total Interactions
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">The sum of all trackable actions taken by visitors (clicks on WhatsApp, phone calls, document views, plan opens).</span>
+            </div>
+          </span>
+          <span>🖱️</span>
+        </div>
+        <div class="kpi-value" id="kpiTotalEvents">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            WhatsApp Inquiries
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">Total WhatsApp contact button clicks.</span>
+            </div>
+          </span>
+          <span>💬</span>
+        </div>
+        <div class="kpi-value" id="kpiWhatsapp">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Phone Call Clicks
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">Total phone number click interactions.</span>
+            </div>
+          </span>
+          <span>📞</span>
+        </div>
+        <div class="kpi-value" id="kpiCall">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Email Links Clicks
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">Total email link click interactions.</span>
+            </div>
+          </span>
+          <span>✉️</span>
+        </div>
+        <div class="kpi-value" id="kpiEmail">-</div>
+      </div>
+    </div>
+
+    <!-- Event type bar chart -->
+    <div class="chart-card" style="margin-bottom: 30px;">
+      <h3>
+        Interactions Breakdown By Action
+        <div class="tooltip-container">
+          <span class="tooltip-icon">ⓘ</span>
+          <span class="tooltip-text">Breakdown of user actions (WhatsApp clicks, call clicks, accordion toggles) by action type.</span>
+        </div>
+      </h3>
+      <div class="chart-container" style="height: 300px;">
+        <canvas id="eventTypeChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Partners and Documents Grid -->
+    <div class="charts-grid">
+      
+      <!-- Partner interactions leaderboard -->
+      <div class="table-card" style="display: flex; flex-direction: column;">
+        <div class="table-header-bar">
+          <h3>Partner Interactions Leaderboard</h3>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Partner Name
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The name of the associate or listing partner profile clicked by visitors.</span>
+                  </div>
+                </th>
+                <th>
+                  Calls
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Number of phone call clicks for this partner.</span>
+                  </div>
+                </th>
+                <th>
+                  WhatsApp
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Number of WhatsApp clicks for this partner.</span>
+                  </div>
+                </th>
+                <th>
+                  Emails
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Number of email link clicks for this partner.</span>
+                  </div>
+                </th>
+                <th>
+                  Total Clicks
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Sum of all clicks (calls, WhatsApp, email) for this partner.</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="partnersTableBody">
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--text-muted);">Loading partner clicks...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Document opens list -->
+      <div class="table-card" style="display: flex; flex-direction: column;">
+        <div class="table-header-bar">
+          <h3>Document Accordion Engagement</h3>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Document Section
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The title of the document accordion section toggled.</span>
+                  </div>
+                </th>
+                <th>
+                  Unique Readers
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Number of individual visitors who opened this section.</span>
+                  </div>
+                </th>
+                <th>
+                  Total Opens
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Total number of times this section was opened.</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="documentsTableBody">
+              <tr>
+                <td colspan="3" style="text-align: center; color: var(--text-muted);">Loading document clicks...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/admin-analytics.js"></script>
+</body>
+</html>

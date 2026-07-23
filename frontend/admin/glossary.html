@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & Glossary | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item active">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>Metrics & Jargon Glossary</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Find plain-language business explanations for all charts, cards, and terms</p>
+      </div>
+    </div>
+
+    <!-- Interactive Glossary Search & Filters -->
+    <div class="glossary-search-bar">
+      <input type="text" id="glossarySearch" class="form-input" placeholder="Search for terms, keywords or metrics...">
+      <div class="glossary-filters">
+        <button class="glossary-tab active" data-filter="all">All Metrics</button>
+        <button class="glossary-tab" data-filter="dashboard">Dashboard Overview</button>
+        <button class="glossary-tab" data-filter="visitors">Visitor Traffic</button>
+        <button class="glossary-tab" data-filter="interactions">Interactions & Engagement</button>
+        <button class="glossary-tab" data-filter="services">Service Performance</button>
+        <button class="glossary-tab" data-filter="leads">Leads & Operational States</button>
+      </div>
+    </div>
+
+    <!-- Glossary Grid -->
+    <div class="glossary-grid" id="glossaryGrid">
+      
+      <!-- Dashboard Overview Metrics -->
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Total Views <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Page Views</div>
+        <p>The total number of times pages on your site were loaded. For example, if a single visitor looks at 3 different service pages, it counts as 3 views.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Unique Visitors <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Distinct Visitors</div>
+        <p>The number of unique individuals who visited your site. Multiple visits from the same person or device only count as 1 here.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Total Leads <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Form submissions</div>
+        <p>The total number of contact form submissions received from potential clients who are interested in your services.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Conversion Rate <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Lead Conversion %</div>
+        <p>The percentage of unique visitors who filled out the contact form and became leads (calculated as Total Leads divided by Unique Visitors multiplied by 100).</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>WhatsApp Clicks <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: WhatsApp Clicks</div>
+        <p>The number of times visitors clicked your WhatsApp button to start a direct message thread with you.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Call Clicks <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Call Clicks</div>
+        <p>The number of times visitors clicked your phone icon/link to call your office phone directly.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>Email Clicks <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Email Click</div>
+        <p>The number of times visitors clicked your email link to compose a message.</p>
+      </div>
+
+      <div class="glossary-card" data-category="dashboard">
+        <h3>New Leads <span class="glossary-category-badge">Dashboard</span></h3>
+        <div class="glossary-card-alias">Technical term: Active Leads (NEW)</div>
+        <p>Enquiries with status set to NEW that are brand new and require initial response or operational action.</p>
+      </div>
+
+      <!-- Visitor Traffic Metrics -->
+      <div class="glossary-card" data-category="visitors">
+        <h3>New Visitors <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: New Visitors</div>
+        <p>People opening your website for the first time on their device during the tracking window.</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>Returning Visitors <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Returning Visitors</div>
+        <p>People returning to your website after having visited before at least once.</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>Total Visits <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Sessions</div>
+        <p>The total number of browsing sessions (visits) started on your site. A session expires after 30 minutes of inactivity.</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>Avg Clicks / Visit <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Avg Clicks per Session</div>
+        <p>On average, how many times a visitor clicked something (like a call button, WhatsApp, pricing plan, or accordion list) during one visit to your site.</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>Device Viewports <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Device Breakdown</div>
+        <p>Categorizes what hardware screen size visitors used to browse your site (Mobile phones, Desktop computers, or Tablets).</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>Referring Sources <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Traffic Referrers</div>
+        <p>The external domains (such as Google search, Instagram, Facebook, direct link) that visitors came from before landing on your site.</p>
+      </div>
+
+      <div class="glossary-card" data-category="visitors">
+        <h3>First Page Opened <span class="glossary-category-badge">Visitor Traffic</span></h3>
+        <div class="glossary-card-alias">Technical term: Landing Page</div>
+        <p>The very first webpage a visitor viewed when starting their session. Identifying this helps you know what content hooks them.</p>
+      </div>
+
+      <!-- Interactions & Engagement -->
+      <div class="glossary-card" data-category="interactions">
+        <h3>Total Interactions <span class="glossary-category-badge">Interactions</span></h3>
+        <div class="glossary-card-alias">Technical term: Total Events Logged</div>
+        <p>The aggregate sum of all clicks recorded on active components, such as contact links, pricing plan details, and documents checklist opens.</p>
+      </div>
+
+      <div class="glossary-card" data-category="interactions">
+        <h3>Partner Clicks <span class="glossary-category-badge">Interactions</span></h3>
+        <div class="glossary-card-alias">Technical term: Partner Clicks</div>
+        <p>Performance data comparing call, WhatsApp, and email clicks for different team consultant cards.</p>
+      </div>
+
+      <div class="glossary-card" data-category="interactions">
+        <h3>Document Accordion Engagement <span class="glossary-category-badge">Interactions</span></h3>
+        <div class="glossary-card-alias">Technical term: Accordion Open/Close</div>
+        <p>Tracks which document checklists (e.g. GST requirements, MSME papers) visitors opened on the site to read details.</p>
+      </div>
+
+      <!-- Service Performance -->
+      <div class="glossary-card" data-category="services">
+        <h3>Service Interest Stats <span class="glossary-category-badge">Service Performance</span></h3>
+        <div class="glossary-card-alias">Technical term: Service view metrics</div>
+        <p>Shows how much traffic, clicks, and conversion rate each offered service category (e.g. MSME, GST, Trademark) receives.</p>
+      </div>
+
+      <div class="glossary-card" data-category="services">
+        <h3>Pricing Views <span class="glossary-category-badge">Service Performance</span></h3>
+        <div class="glossary-card-alias">Technical term: Pricing opens</div>
+        <p>Tracks how many times visitors clicked or expanded the fees and plans section for a specific service.</p>
+      </div>
+
+      <div class="glossary-card" data-category="services">
+        <h3>Service Conversion Rate <span class="glossary-category-badge">Service Performance</span></h3>
+        <div class="glossary-card-alias">Technical term: Service Conversion %</div>
+        <p>The percentage of visitors viewing a service who ended up sending an enquiry form specifically for that service.</p>
+      </div>
+
+      <!-- Leads & Operational States -->
+      <div class="glossary-card" data-category="leads">
+        <h3>Lead Status: NEW <span class="glossary-category-badge">Leads</span></h3>
+        <div class="glossary-card-alias">Internal state: NEW</div>
+        <p>Operational status representing a newly arrived enquiry that has not been read or contacted yet. Requires follow-up action.</p>
+      </div>
+
+      <div class="glossary-card" data-category="leads">
+        <h3>Lead Status: CONTACTED <span class="glossary-category-badge">Leads</span></h3>
+        <div class="glossary-card-alias">Internal states: CONTACTED / FOLLOW UP / INTERESTED</div>
+        <p>Operational status indicating you have initiated contact (e.g. called, emailed, or text messaged) and the customer is active in discussion.</p>
+      </div>
+
+      <div class="glossary-card" data-category="leads">
+        <h3>Lead Status: CONVERTED <span class="glossary-category-badge">Leads</span></h3>
+        <div class="glossary-card-alias">Internal states: IN PROGRESS / DOCS PENDING / COMPLETED</div>
+        <p>Visual group on the Leads board grouping active clients who are currently working with you (documents pending, task in progress, or completed successfully).</p>
+      </div>
+
+      <div class="glossary-card" data-category="leads">
+        <h3>Lead Status: LOST / CLOSED <span class="glossary-category-badge">Leads</span></h3>
+        <div class="glossary-card-alias">Internal states: NOT INTERESTED / CLOSED</div>
+        <p>Visual group on the Leads board grouping leads that did not proceed (Not Interested) or have been finalized and archived.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      // Auth Guard
+      async function checkAuth() {
+        try {
+          const response = await fetch('/api/admin/auth/me');
+          if (!response.ok) {
+            window.location.href = 'login.html';
+          }
+        } catch (err) {
+          window.location.href = 'login.html';
+        }
+      }
+      await checkAuth();
+
+      // Logout handler
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function () {
+          try {
+            const response = await fetch('/api/admin/auth/logout', { method: 'POST' });
+            if (response.ok) {
+              window.location.href = 'login.html';
+            }
+          } catch (err) {
+            console.error('Logout failed:', err);
+          }
+        });
+      }
+
+      // Search & Filtering Logic
+      const searchInput = document.getElementById('glossarySearch');
+      const tabs = document.querySelectorAll('.glossary-tab');
+      const cards = document.querySelectorAll('.glossary-card');
+
+      function filterGlossary() {
+        const query = searchInput.value.toLowerCase().trim();
+        const activeTab = document.querySelector('.glossary-tab.active');
+        const filterCategory = activeTab.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const title = card.querySelector('h3').innerText.toLowerCase();
+          const alias = card.querySelector('.glossary-card-alias').innerText.toLowerCase();
+          const desc = card.querySelector('p').innerText.toLowerCase();
+          const category = card.getAttribute('data-category');
+
+          const matchesSearch = title.includes(query) || alias.includes(query) || desc.includes(query);
+          const matchesCategory = filterCategory === 'all' || category === filterCategory;
+
+          if (matchesSearch && matchesCategory) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      searchInput.addEventListener('input', filterGlossary);
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          filterGlossary();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

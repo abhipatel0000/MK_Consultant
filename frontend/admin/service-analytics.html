@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Analytics | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item active">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>Service Performance & Conversions</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Analyze visitor interest, pricing views, and lead conversions per service category</p>
+      </div>
+    </div>
+
+    <!-- Service Performance Table Card -->
+    <div class="table-card">
+      <div class="table-header-bar">
+        <h3>Service Interest Statistics</h3>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Service Name
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The name of the service offered.</span>
+                </div>
+              </th>
+              <th>
+                Unique Visitors
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Number of distinct people who viewed this service page/section.</span>
+                </div>
+              </th>
+              <th>
+                Total Clicks
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Sum of all interactions tracked on this service.</span>
+                </div>
+              </th>
+              <th>
+                Pricing Views
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Number of times visitors clicked or expanded the pricing details for this service.</span>
+                </div>
+              </th>
+              <th>
+                WhatsApp Clicks
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">WhatsApp inquiries for this specific service.</span>
+                </div>
+              </th>
+              <th>
+                Enquiries
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Form submissions received requesting this service.</span>
+                </div>
+              </th>
+              <th>
+                Conversion Rate
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Percentage of service viewers who submitted an enquiry (Enquiries / Unique Visitors * 100).</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="servicesTableBody">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 40px 0;">Loading service metrics...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/admin-analytics.js"></script>
+</body>
+</html>

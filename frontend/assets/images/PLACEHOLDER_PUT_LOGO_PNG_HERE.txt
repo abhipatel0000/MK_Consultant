@@ -1,0 +1,7 @@
+Please save your custom logo image as "logo.png" inside this directory.
+
+This folder is referenced by:
+1. Header logo: F:\xampp\htdocs\MK_Consultant\frontend\index.html
+2. Footer logo: F:\xampp\htdocs\MK_Consultant\frontend\index.html
+
+Using a separate logo file instead of a large 300KB base64 string optimizes loading speeds, avoids HTML truncation errors, and enables browser caching.

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Analytics | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item active">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>Visitor Traffic Analytics</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Analyze visitor counts, browsers, devices, and traffic origins</p>
+      </div>
+    </div>
+
+    <!-- Visitor KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            New Visitors
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">People opening your website for the first time.</span>
+            </div>
+          </span>
+          <span>🆕</span>
+        </div>
+        <div class="kpi-value" id="kpiNewVisitors">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Returning Visitors
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">People returning to your website after having visited before.</span>
+            </div>
+          </span>
+          <span>🔄</span>
+        </div>
+        <div class="kpi-value" id="kpiReturningVisitors">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Total Visits
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">The total number of browsing sessions (visits) started on your site.</span>
+            </div>
+          </span>
+          <span>🖱️</span>
+        </div>
+        <div class="kpi-value" id="kpiTotalSessions">-</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>
+            Avg Clicks / Visit
+            <div class="tooltip-container">
+              <span class="tooltip-icon">ⓘ</span>
+              <span class="tooltip-text">On average, how many times a visitor clicked something (call, WhatsApp, pricing) during one visit to your site.</span>
+            </div>
+          </span>
+          <span>⚡</span>
+        </div>
+        <div class="kpi-value" id="kpiAvgInteractions">-</div>
+      </div>
+    </div>
+
+    <!-- Device & OS Charts -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>
+          Device Viewports Breakdown
+          <div class="tooltip-container">
+            <span class="tooltip-icon">ⓘ</span>
+            <span class="tooltip-text">Devices (mobile, desktop, tablet) visitors used to view your site.</span>
+          </div>
+        </h3>
+        <div class="chart-container" style="height: 250px;">
+          <canvas id="deviceChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>
+          Operating Systems
+          <div class="tooltip-container">
+            <span class="tooltip-icon">ⓘ</span>
+            <span class="tooltip-text">Operating systems (Windows, Android, iOS, macOS, Linux) used by your visitors.</span>
+          </div>
+        </h3>
+        <div class="chart-container" style="height: 250px;">
+          <canvas id="osChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Browser & Landing Lists -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>
+          Top Web Browsers
+          <div class="tooltip-container">
+            <span class="tooltip-icon">ⓘ</span>
+            <span class="tooltip-text">Web browsers (Chrome, Safari, Edge, Firefox, etc.) used by visitors.</span>
+          </div>
+        </h3>
+        <div class="chart-container" style="height: 250px;">
+          <canvas id="browserChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Landing & Referrers Grid Lists -->
+      <div class="chart-card" style="display: flex; flex-direction: column;">
+        <h3>
+          Where Visitors Came From (Referring Sources)
+          <div class="tooltip-container">
+            <span class="tooltip-icon">ⓘ</span>
+            <span class="tooltip-text">The external website domains (e.g. Google, Instagram, direct link) that directed visitors to your site.</span>
+          </div>
+        </h3>
+        <div class="table-responsive" style="flex-grow: 1; max-height: 250px;">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Referrer URL
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The external website or source from which the visitor arrived.</span>
+                  </div>
+                </th>
+                <th>
+                  Visit Count
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">Number of visits arriving from this source.</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="referrersTableBody">
+              <tr>
+                <td colspan="2" style="text-align: center; color: var(--text-muted);">Loading referrer list...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Landing page table list -->
+    <div class="table-card">
+      <div class="table-header-bar">
+        <h3>
+          First Pages Opened Popularity (Landing Pages)
+          <div class="tooltip-container">
+            <span class="tooltip-icon">ⓘ</span>
+            <span class="tooltip-text">The initial webpage a visitor first viewed when starting their session.</span>
+          </div>
+        </h3>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Page URL
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Specific webpage address on your site.</span>
+                </div>
+              </th>
+              <th>
+                First Page Opens
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">Number of times this page was the first one opened in a visit.</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="landingPagesTableBody">
+            <tr>
+              <td colspan="2" style="text-align: center; color: var(--text-muted); padding: 20px 0;">Loading page entries...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/admin-analytics.js"></script>
+</body>
+</html>

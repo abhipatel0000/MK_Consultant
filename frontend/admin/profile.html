@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Profile | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item active">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <h1>Profile & Security Settings</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Manage credentials, view profile info, and inspect security audit history</p>
+      </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="profileAlert"></div>
+
+    <div class="lead-grid">
+      
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- Account Info -->
+        <div class="details-card">
+          <h3>Administrator Profile Details</h3>
+          
+          <div class="info-block">
+            <div class="info-block-label">Full Name</div>
+            <div class="info-block-value" id="profName">-</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">Email Address</div>
+            <div class="info-block-value" id="profEmail">-</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">Security Role</div>
+            <div class="info-block-value" id="profRole">-</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">Last Login Timestamp</div>
+            <div class="info-block-value" id="profLastLogin">-</div>
+          </div>
+        </div>
+
+        <!-- Change Password Card -->
+        <div class="details-card">
+          <h3>Change Account Password</h3>
+          
+          <form id="changePasswordForm">
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <input type="password" id="currentPassword" class="form-input" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-group">
+              <label for="newPassword">New Password (min 8 characters)</label>
+              <input type="password" id="newPassword" class="form-input" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm New Password</label>
+              <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;" id="savePasswordBtn">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <!-- Recent Audit Log / Login History -->
+        <div class="table-card">
+          <div class="table-header-bar">
+            <h3>Recent Login Attempts Audit</h3>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>IP Address</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody id="loginHistoryBody">
+                <tr>
+                  <td colspan="3" style="text-align: center; color: var(--text-muted); padding: 20px 0;">Loading security audit...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/admin-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Details | M K Consultant</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar Toggle Checkbox (Checkbox Hack) -->
+  <input type="checkbox" id="sidebar-toggle-check">
+  
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-header">
+    <label for="sidebar-toggle-check" class="mobile-menu-btn">☰</label>
+    <div class="mobile-brand">M K <span>CONSULTANT</span></div>
+    <div style="width: 32px;"></div>
+  </div>
+  
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <label for="sidebar-toggle-check" class="sidebar-overlay"></label>
+
+  <!-- =========================================================================
+       SIDEBAR NAV
+       ========================================================================= -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h3>M K <span>CONSULTANT</span></h3>
+    </div>
+    <ul class="sidebar-menu">
+      <a href="dashboard.html" class="menu-item">
+        <span>📊</span> &nbsp; <span>Dashboard</span>
+      </a>
+      <a href="leads.html" class="menu-item active">
+        <span>💼</span> &nbsp; <span>Lead Management</span>
+      </a>
+      <a href="visitor-analytics.html" class="menu-item">
+        <span>👥</span> &nbsp; <span>Visitor Analytics</span>
+      </a>
+      <a href="interaction-analytics.html" class="menu-item">
+        <span>⚡</span> &nbsp; <span>Interaction Analytics</span>
+      </a>
+      <a href="service-analytics.html" class="menu-item">
+        <span>🛠️</span> &nbsp; <span>Service Analytics</span>
+      </a>
+      <a href="glossary.html" class="menu-item">
+        <span>📖</span> &nbsp; <span>Help / Glossary</span>
+      </a>
+      <a href="profile.html" class="menu-item">
+        <span>👤</span> &nbsp; <span>Profile Config</span>
+      </a>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">
+        <span>🚪</span> &nbsp; <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main class="main-content">
+    <div class="content-header">
+      <div>
+        <a href="leads.html" style="color: var(--accent-cyan); font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+          ← Back to Leads List
+        </a>
+        <h1 id="headerLeadName">Lead Detail Card</h1>
+      </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="detailsAlert"></div>
+
+    <!-- Details Grid -->
+    <div class="lead-grid" id="leadDetailsContainer">
+      
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- Profile Block -->
+        <div class="details-card">
+          <h3>Customer Information</h3>
+          
+          <div class="info-grid">
+            <div class="info-block">
+              <div class="info-block-label">
+                Full Name
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The customer's name.</span>
+                </div>
+              </div>
+              <div class="info-block-value" id="valName">-</div>
+            </div>
+            
+            <div class="info-block">
+              <div class="info-block-label">
+                Phone Number
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The customer's phone number.</span>
+                </div>
+              </div>
+              <div class="info-block-value">
+                <span id="valPhone" style="font-weight: 600;">-</span>
+                <div style="margin-top: 6px; display: flex; gap: 8px;">
+                  <a href="" id="btnCallPhone" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.75rem;">Call</a>
+                  <a href="" id="btnWaPhone" target="_blank" class="btn btn-emerald" style="padding: 4px 8px; font-size: 0.75rem;">WhatsApp</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                Email Address
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The customer's email address.</span>
+                </div>
+              </div>
+              <div class="info-block-value">
+                <span id="valEmail">-</span>
+                <div style="margin-top: 6px;" id="emailLinkContainer">
+                  <a href="" id="btnEmailLink" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.75rem;">Send Email</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                Service Selected
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The service the customer enquired about.</span>
+                </div>
+              </div>
+              <div class="info-block-value" id="valService" style="color: var(--accent-cyan); font-weight: 600;">-</div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                Contact Method Preference
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The customer's preferred contact method.</span>
+                </div>
+              </div>
+              <div class="info-block-value" id="valMethod">-</div>
+            </div>
+
+            <div class="info-block">
+              <div class="info-block-label">
+                Source / Origin
+                <div class="tooltip-container">
+                  <span class="tooltip-icon">ⓘ</span>
+                  <span class="tooltip-text">The landing URL or referral domain.</span>
+                </div>
+              </div>
+              <div class="info-block-value" id="valSource">-</div>
+            </div>
+          </div>
+
+          <div class="info-block" style="margin-top: 20px;">
+            <div class="info-block-label">
+              Message / Details
+              <div class="tooltip-container">
+                <span class="tooltip-icon">ⓘ</span>
+                <span class="tooltip-text">The message sent by the customer.</span>
+              </div>
+            </div>
+            <div class="info-block-value" id="valMessage" style="background: rgba(0,0,0,0.2); padding: 14px; border-radius: var(--radius-sm); font-style: italic; white-space: pre-wrap;">-</div>
+          </div>
+
+          <!-- Status Editor -->
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div>
+              <div class="info-block-label">Current Status</div>
+              <div style="margin-top: 4px;" id="valStatusBadge">-</div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 0; min-width: 200px;">
+              <label for="changeStatusSelect">Change Status</label>
+              <select id="changeStatusSelect" class="form-input">
+                <option value="NEW">New</option>
+                <option value="CONTACTED">Contacted</option>
+                <option value="FOLLOW_UP">Follow Up</option>
+                <option value="INTERESTED">Interested</option>
+                <option value="DOCUMENTS_PENDING">Documents Pending</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="NOT_INTERESTED">Not Interested</option>
+                <option value="CLOSED">Closed</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Private Notes Block -->
+        <div class="details-card">
+          <h3>Private Admin Follow-Up Notes</h3>
+          
+          <div class="notes-list" id="notesListContainer">
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center;">No notes written for this lead yet.</p>
+          </div>
+
+          <!-- Add Note form -->
+          <form id="addNoteForm" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+            <div class="form-group">
+              <label for="noteInputText">Add Follow-Up Note</label>
+              <textarea id="noteInputText" class="form-input" rows="3" placeholder="Write call summary, pending documents, or follow-up details..."></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+              <!-- Edit mode state indicators -->
+              <input type="hidden" id="editingNoteId" value="">
+              <button type="button" class="btn btn-secondary" id="cancelEditNoteBtn" style="display: none;">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="saveNoteBtn">Save Note</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <!-- Tech & Source details -->
+        <div class="details-card">
+          <h3>Traffic & Geolocation details</h3>
+          
+          <div class="info-block">
+            <div class="info-block-label">
+              Device Context
+              <div class="tooltip-container">
+                <span class="tooltip-icon">ⓘ</span>
+                <span class="tooltip-text">The device viewport type (mobile, desktop, etc.).</span>
+              </div>
+            </div>
+            <div class="info-block-value" id="valDevice">-</div>
+          </div>
+          
+          <div class="info-block">
+            <div class="info-block-label">
+              Browser & Operating System
+              <div class="tooltip-container">
+                <span class="tooltip-icon">ⓘ</span>
+                <span class="tooltip-text">The web browser and operating system details.</span>
+              </div>
+            </div>
+            <div class="info-block-value" id="valBrowser">-</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">
+              Approximate Location
+              <div class="tooltip-container">
+                <span class="tooltip-icon">ⓘ</span>
+                <span class="tooltip-text">Approximate geolocation based on IP address.</span>
+              </div>
+            </div>
+            <div class="info-block-value" id="valLocation">-</div>
+          </div>
+
+          <div class="info-block" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; margin-top: 16px;">
+            <div class="info-block-label">Marketing Campaigns (Campaign Source & Medium)</div>
+            <div class="info-grid" style="margin-top: 6px;">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">
+                  Where They Came From (Google, Instagram, Direct link, etc.)
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The advertising channel, social network, search engine, or link source (UTM Source).</span>
+                  </div>
+                </div>
+                <div id="valUtmSource" style="font-size: 0.85rem; font-weight: 500;">-</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">
+                  Medium
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The marketing channel type, e.g. email, CPC, banner (UTM Medium).</span>
+                  </div>
+                </div>
+                <div id="valUtmMedium" style="font-size: 0.85rem; font-weight: 500;">-</div>
+              </div>
+              <div style="grid-column: span 2; margin-top: 6px;">
+                <div style="font-size: 0.75rem; color: var(--text-muted);">
+                  Campaign Name
+                  <div class="tooltip-container">
+                    <span class="tooltip-icon">ⓘ</span>
+                    <span class="tooltip-text">The marketing campaign name (UTM Campaign).</span>
+                  </div>
+                </div>
+                <div id="valUtmCampaign" style="font-size: 0.85rem; font-weight: 500;">-</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visitor Timeline -->
+        <div class="timeline-card">
+          <h3>Visitor Activity Timeline</h3>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px;">Chronological timeline of website clicks & admin actions</p>
+          
+          <div class="timeline" id="timelineContainer">
+            <div style="text-align: center; color: var(--text-muted);">Loading timeline...</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/admin-leads.js"></script>
+</body>
+</html>
